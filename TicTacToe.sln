@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "TicTacToe.csproj", "{5BF5E18C-3D8C-4602-885C-4DA6191144C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BF5E18C-3D8C-4602-885C-4DA6191144C8}.Debug|x86.ActiveCfg = Debug|x86
+		{5BF5E18C-3D8C-4602-885C-4DA6191144C8}.Debug|x86.Build.0 = Debug|x86
+		{5BF5E18C-3D8C-4602-885C-4DA6191144C8}.Release|x86.ActiveCfg = Release|x86
+		{5BF5E18C-3D8C-4602-885C-4DA6191144C8}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9D5FC84-5635-45E2-B3E2-C03D8EAE9D1C}
+	EndGlobalSection
+EndGlobal

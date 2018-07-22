@@ -1,0 +1,646 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{5BF5E18C-3D8C-4602-885C-4DA6191144C8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>WindowsApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>TicTacToe</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BenchmarkDotNet, Version=0.10.9.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
+      <HintPath>packages\BenchmarkDotNet.0.10.9\lib\net46\BenchmarkDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="BenchmarkDotNet.Core, Version=0.10.9.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
+      <HintPath>packages\BenchmarkDotNet.Core.0.10.9\lib\net46\BenchmarkDotNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BenchmarkDotNet.Toolchains.Roslyn, Version=0.10.9.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
+      <HintPath>packages\BenchmarkDotNet.Toolchains.Roslyn.0.10.9\lib\net46\BenchmarkDotNet.Toolchains.Roslyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Box2DX, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Box2DX.2.0.2.0\lib\net40\Box2DX.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>packages\CsvHelper.4.0.0\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.Common.2.0.0\lib\netstandard1.3\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.2.0.0\lib\netstandard1.3\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.DotNet.InternalAbstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.DotNet.InternalAbstractions.1.0.0\lib\net451\Microsoft.DotNet.InternalAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.DotNet.PlatformAbstractions.1.1.1\lib\net451\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Win32.Registry.4.3.0\lib\net46\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Redzen, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Redzen.3.0.2\lib\net40\Redzen.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.FileVersionInfo, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.FileVersionInfo.4.3.0\lib\net46\System.Diagnostics.FileVersionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.StackTrace.4.3.0\lib\net46\System.Diagnostics.StackTrace.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=1.4.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.Metadata.1.4.2\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encoding.CodePages.4.3.0\lib\net46\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Thread.4.3.0\lib\net46\System.Threading.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XmlDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Xml.XmlDocument.4.3.0\lib\net46\System.Xml.XmlDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Xml.XPath.4.3.0\lib\net46\System.Xml.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Xml.XPath.XDocument.4.3.0\lib\net46\System.Xml.XPath.XDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemInfoLibrary, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SystemInfoLibrary.1.4.1\lib\net45\SystemInfoLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ZedGraph, Version=5.1.7.430, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <HintPath>packages\ZedGraph.5.1.7\lib\net35-Client\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="NeatGenomeUtils.cs" />
+    <Compile Include="MinMaxPlayer.cs" />
+    <Compile Include="RandomPlayer.cs" />
+    <Compile Include="Evaluator.cs" />
+    <Compile Include="NEATPlayer.cs" />
+    <Compile Include="HumanPlayer.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="GUI.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="HeuristicAIPlayer.cs" />
+    <Compile Include="SharpNeat\ActivationFnBenchmarks\FunctionBenchmarks.cs" />
+    <Compile Include="SharpNeat\ActivationFnBenchmarks\FunctionFloatBenchmarks.cs" />
+    <Compile Include="SharpNeat\ActivationFnBenchmarks\Functions.cs" />
+    <Compile Include="SharpNeat\ActivationFnBenchmarks\FunctionsFloat.cs" />
+    <Compile Include="SharpNeat\ActivationFunctionViewer\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\ActivationFunctionViewer\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\ActivationFunctionViewer\Properties\Resources.Designer.cs" />
+    <Compile Include="SharpNeat\ActivationFunctionViewer\Properties\Settings.Designer.cs" />
+    <Compile Include="SharpNeat\EfficacySampler\ArgUtils.cs" />
+    <Compile Include="SharpNeat\EfficacySampler\EvolutionAlgorithmHost.cs" />
+    <Compile Include="SharpNeat\EfficacySampler\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="SharpNeat\EfficacySampler\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="SharpNeat\EfficacySampler\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="SharpNeat\EfficacySampler\Sample.cs" />
+    <Compile Include="SharpNeat\EfficacySampler\StopCondition.cs" />
+    <Compile Include="SharpNeat\EfficacySampler\StopConditionType.cs" />
+    <Compile Include="SharpNeat\EfficacySampler\SysInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatConsole\obj\x86\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="SharpNeat\SharpNeatConsole\obj\x86\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="SharpNeat\SharpNeatConsole\obj\x86\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\AbstractDomainView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\AbstractGenomeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\BinaryElevenMultiplexer\BinaryElevenMultiplexerEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BinaryElevenMultiplexer\BinaryElevenMultiplexerExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BinaryElevenMultiplexer\RbfBinaryElevenMultiplexerExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BinarySixMultiplexer\BinarySixMultiplexerEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BinarySixMultiplexer\BinarySixMultiplexerExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BinarySixMultiplexer\RbfBinarySixMultiplexerExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BinaryThreeMultiplexer\BinaryThreeMultiplexerEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BinaryThreeMultiplexer\BinaryThreeMultiplexerExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BoxesVisualDiscrimination\BoxesVisualDiscriminationEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BoxesVisualDiscrimination\BoxesVisualDiscriminationExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\BoxesVisualDiscrimination\BoxesVisualDiscriminationView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\BoxesVisualDiscrimination\BoxesVisualDiscriminationView.Designer.cs">
+      <DependentUpon>BoxesVisualDiscriminationView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\BoxesVisualDiscrimination\TestCaseField.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\CppnGenomeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\CppnGenomeView.Designer.cs">
+      <DependentUpon>CppnGenomeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\DoublePoleBalancing\DoublePoleBalancingEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\DoublePoleBalancing\DoublePoleBalancingEvaluatorNv.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\DoublePoleBalancing\DoublePoleBalancingEvaluatorNvAntiWiggle.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\DoublePoleBalancing\DoublePoleBalancingExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\DoublePoleBalancing\JiggleBuffer.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\ExperimentUtils.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\BlackBoxProbe.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\FnRegressionEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\FnRegressionExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\FnRegressionUtils.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\FnRegressionView2D.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\FnRegressionView2D.Designer.cs">
+      <DependentUpon>FnRegressionView2D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\FunctionId.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\FunctionProbe.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\Functions\AbsFunction.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\Functions\LogFn.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\Functions\SinFn.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\Functions\SinXSquaredFn.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\Functions\Waveform1.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\FunctionUtils.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\GenerativeBlackBoxProbe.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\IBlackBoxProbe.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\IFunction.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\FunctionRegression\ParameterSamplingInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\GenerativeFunctionRegression\GenerativeFnRegressionEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\GenerativeFunctionRegression\GenerativeFnRegressionExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\IGuiNeatExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\INeatExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\IntPoint.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\NeatGenomeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\NeatGenomeView.Designer.cs">
+      <DependentUpon>NeatGenomeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\PolarPoint.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\PreyCapture\PreyCaptureEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\PreyCapture\PreyCaptureExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\PreyCapture\PreyCaptureView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\PreyCapture\PreyCaptureView.Designer.cs">
+      <DependentUpon>PreyCaptureView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatDomains\PreyCapture\PreyCaptureWorld.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\SinglePoleBalancing\SinglePoleBalancingEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\SinglePoleBalancing\SinglePoleBalancingExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\SinglePoleBalancing\SinglePoleStateData.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\XmlUtils.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\Xor\XorBlackBoxEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatDomains\Xor\XorExperiment.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\ExperimentInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\GenomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\GenomeForm.Designer.cs">
+      <DependentUpon>GenomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\HSLColor.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\ListItem.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\Logger.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\LogWindowAppender.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\ProblemDomainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\ProblemDomainForm.Designer.cs">
+      <DependentUpon>ProblemDomainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\Properties\Resources.Designer.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\Properties\Settings.Designer.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\SummaryDataSource.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\SummaryGraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\SummaryGraphForm.Designer.cs">
+      <DependentUpon>SummaryGraphForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\TimeSeriesDataSource.cs" />
+    <Compile Include="SharpNeat\SharpNeatGUI\TimeSeriesGraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatGUI\TimeSeriesGraphForm.Designer.cs">
+      <DependentUpon>TimeSeriesGraphForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatLib\Core\AuxFitnessInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\CoordinateVector.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\EvaluationInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\FitnessInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\GenomeFitnessComparer.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\IDistanceMetric.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\IEvolutionAlgorithm.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\IGenome.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\IGenomeDecoder.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\IGenomeFactory.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\IGenomeListEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\IPhenomeEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\ISpeciationStrategy.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\ParallelGenomeListEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\RunState.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\SelectiveGenomeListEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\SerialGenomeListEvaluator.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\Specie.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\UpdateMode.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Core\UpdateScheme.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\CyclicNetworkFactory.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\FastAcyclicNetworkFactory.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\FastCyclicNetworkFactory.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\HyperNeat\DefaultNodeSetMappingFunction.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\HyperNeat\HyperNeatDecoder.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\HyperNeat\INodeSetMappingFunction.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\HyperNeat\NodeSetMapping.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\HyperNeat\Substrate.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\HyperNeat\SubstrateConnection.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\HyperNeat\SubstrateNode.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\HyperNeat\SubstrateNodeSet.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\Neat\NeatGenomeDecoder.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Decoders\NetworkActivationScheme.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\DistanceMetrics\DistanceMetricUtils.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\DistanceMetrics\EuclideanDistanceMetric.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\DistanceMetrics\ManhattanDistanceMetric.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\EvolutionAlgorithms\AbstractGenerationalAlgorithm.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\EvolutionAlgorithms\ComplexityRegulation\ComplexityCeilingType.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\EvolutionAlgorithms\ComplexityRegulation\ComplexityRegulationMode.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\EvolutionAlgorithms\ComplexityRegulation\DefaultComplexityRegulationStrategy.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\EvolutionAlgorithms\ComplexityRegulation\IComplexityRegulationStrategy.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\EvolutionAlgorithms\ComplexityRegulation\NullComplexityRegulationStrategy.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\EvolutionAlgorithms\NeatAlgorithmStats.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\EvolutionAlgorithms\NeatEvolutionAlgorithm.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\EvolutionAlgorithms\NeatEvolutionAlgorithmParameters.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\HyperNeat\CppnGenomeFactory.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\AddedNeuronGeneStruct.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\ConnectionGene.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\ConnectionGeneComparer.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\ConnectionGeneList.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\ConnectionGeneListBuilder.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\ConnectionMutationInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\ConnectionMutationInfoList.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\ConnectionPerturbanceType.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\ConnectionSelectionType.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\CorrelationItem.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\CorrelationItemType.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\CorrelationResults.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\CorrelationStatistics.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\NeatGenome.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\NeatGenomeFactory.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\NeatGenomeParameters.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\NeatGenomeStats.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\NeatGenomeXmlIO.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\NeuronGene.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\Neat\NeuronGeneList.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Genomes\RbfNeat\RbfGenomeFactory.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\ActivationFunctionInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Bipolar\BipolarGaussian.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Bipolar\BipolarSigmoid.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Bipolar\Linear.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Bipolar\Sine.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\NullFn.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\RadialBasis\RbfGaussian.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\ArcSinH.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\ArcTan.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\Gaussian.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\LeakyReLU.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\LeakyReLUShifted.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\LogisticApproximantSteep.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\LogisticFunction.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\LogisticFunctionSteep.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\MaxMinusOne.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\PolynomialApproximantSteep.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\QuadraticSigmoid.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\ReLU.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\ScaledELU.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\SoftSignSteep.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\SReLU.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\SReLUShifted.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ActivationFunctions\Unipolar\TanH.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\AcyclicNetworkDepthAnalysis.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ConnectionEndpointsStruct.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\ConnectionList.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\CyclicNetworkDepthAnalysis.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\CyclicNetworkTest.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\DefaultActivationFunctionLibrary.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\IActivationFunction.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\IActivationFunctionLibrary.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\IConnectionList.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\INetworkConnection.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\INetworkDefinition.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\INetworkNode.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\INodeList.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\NetworkConnection.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\NetworkConnectivityData.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\NetworkDefinition.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\NetworkDepthInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\NetworkNode.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\NetworkXmlIO.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\NodeConnectivityData.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\NodeList.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Network\NodeType.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\IBlackBox.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\ISignalArray.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\MappingSignalArray.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\NeuralNets\AcyclicNetwork\FastAcyclicNetwork.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\NeuralNets\AcyclicNetwork\LayerInfo.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\NeuralNets\CyclicNetwork\Connection.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\NeuralNets\CyclicNetwork\CyclicNetwork.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\NeuralNets\CyclicNetwork\Neuron.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\NeuralNets\CyclicNetwork\RelaxingCyclicNetwork.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\NeuralNets\FastCyclicNetwork\FastConnection.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\NeuralNets\FastCyclicNetwork\FastCyclicNetwork.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\NeuralNets\FastCyclicNetwork\FastRelaxingCyclicNetwork.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\OutputMappingSignalArray.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\OutputSignalArray.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Phenomes\SignalArray.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Properties\Resources.Designer.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Properties\Settings.Designer.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\SharpNeatException.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\SpeciationStrategies\GenomeDistancePair.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\SpeciationStrategies\KMeansClusteringStrategy.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\SpeciationStrategies\ParallelKMeansClusteringStrategy.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\SpeciationStrategies\RandomClusteringStrategy.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\SpeciationStrategies\SpeciationUtils.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Utility\Point2DDouble.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Utility\UInt32IdGenerator.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Utility\Utilities.cs" />
+    <Compile Include="SharpNeat\SharpNeatLib\Utility\XmlIoUtils.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\GraphControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SharpNeat\SharpNeatViewLib\GraphFactories\NetworkGraphFactory.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Graph\CppnGraphPainter.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Graph\DepthLayoutManager.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Graph\GraphConnection.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Graph\GraphNode.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Graph\GridLayoutManager.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Graph\ILayoutManager.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Graph\IOGraph.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Graph\IOGraphPainter.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Graph\IOGraphViewportPainter.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\IViewportPainter.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="SharpNeat\SharpNeatViewLib\Viewport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimpleNeatExperiment.cs" />
+    <Compile Include="TicTacToeExperiment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="SharpNeat\.vs\SharpNeat\v15\.suo" />
+    <None Include="SharpNeat\.vs\SharpNeat\v15\sqlite3\storage.ide" />
+    <None Include="SharpNeat\ActivationFnBenchmarks\App.config" />
+    <None Include="SharpNeat\ActivationFnBenchmarks\packages.config" />
+    <None Include="SharpNeat\ActivationFunctionViewer\App.config" />
+    <None Include="SharpNeat\ActivationFunctionViewer\packages.config" />
+    <None Include="SharpNeat\ActivationFunctionViewer\Properties\Settings.settings" />
+    <None Include="SharpNeat\clean_up.bat" />
+    <None Include="SharpNeat\EfficacySampler\App.config" />
+    <None Include="SharpNeat\EfficacySampler\log4net.properties" />
+    <None Include="SharpNeat\EfficacySampler\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="SharpNeat\EfficacySampler\obj\Debug\EfficacySampler.csproj.CoreCompileInputs.cache" />
+    <None Include="SharpNeat\EfficacySampler\packages.config" />
+    <None Include="SharpNeat\Settings.StyleCop" />
+    <None Include="SharpNeat\SharpNeatConsole\app.config" />
+    <None Include="SharpNeat\SharpNeatConsole\log4net.properties" />
+    <None Include="SharpNeat\SharpNeatConsole\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="SharpNeat\SharpNeatConsole\obj\x86\Debug\SharpNeatConsole.csproj.CoreCompileInputs.cache" />
+    <None Include="SharpNeat\SharpNeatConsole\packages.config" />
+    <None Include="SharpNeat\SharpNeatDomains\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="SharpNeat\SharpNeatDomains\obj\Debug\SharpNeatDomains.csproj.CoreCompileInputs.cache" />
+    <None Include="SharpNeat\SharpNeatDomains\packages.config" />
+    <None Include="SharpNeat\SharpNeatDomains\Settings.StyleCop" />
+    <None Include="SharpNeat\SharpNeatGUI\App.config" />
+    <None Include="SharpNeat\SharpNeatGUI\log4net.properties" />
+    <None Include="SharpNeat\SharpNeatGUI\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="SharpNeat\SharpNeatGUI\obj\Debug\SharpNeatGUI.csproj.CoreCompileInputs.cache" />
+    <None Include="SharpNeat\SharpNeatGUI\packages.config" />
+    <None Include="SharpNeat\SharpNeatGUI\Properties\Settings.settings" />
+    <None Include="SharpNeat\SharpNeatLib\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="SharpNeat\SharpNeatLib\obj\Debug\SharpNeatLib.csproj.CoreCompileInputs.cache" />
+    <None Include="SharpNeat\SharpNeatLib\packages.config" />
+    <None Include="SharpNeat\SharpNeatLib\Properties\Settings.settings" />
+    <None Include="SharpNeat\SharpNeatViewLib\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="SharpNeat\SharpNeatViewLib\obj\Debug\SharpNeatViewLib.csproj.CoreCompileInputs.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="License-LGPL.txt" />
+    <Content Include="LICENSE.txt" />
+    <Content Include="SharpNeat\ActivationFnBenchmarks\ActivationFnBenchmarks.csproj" />
+    <Content Include="SharpNeat\ActivationFnBenchmarks\ActivationFnBenchmarks.sln" />
+    <Content Include="SharpNeat\ActivationFunctionViewer\ActivationFunctionViewer.csproj" />
+    <Content Include="SharpNeat\ActivationFunctionViewer\ActivationFunctionViewer.sln" />
+    <Content Include="SharpNeat\EfficacySampler\config\binary-eleven-multiplexer.config.xml" />
+    <Content Include="SharpNeat\EfficacySampler\config\generative-sinewave.config.xml" />
+    <Content Include="SharpNeat\EfficacySampler\EfficacySampler.csproj" />
+    <Content Include="SharpNeat\SharpNeat.sln" />
+    <Content Include="SharpNeat\SharpNeatConsole\SharpNeatConsole.csproj" />
+    <Content Include="SharpNeat\SharpNeatConsole\xor.config.xml" />
+    <Content Include="SharpNeat\SharpNeatDomains\DoublePoleBalancing\Antiwiggle_Explanation_Email.txt" />
+    <Content Include="SharpNeat\SharpNeatDomains\SharpNeatDomains.csproj" />
+    <Content Include="SharpNeat\SharpNeatDomains\SharpNeatDomains.experiments.xml" />
+    <Content Include="SharpNeat\SharpNeatGUI\Resources\About.txt" />
+    <Content Include="SharpNeat\SharpNeatGUI\Resources\Licensing.txt" />
+    <Content Include="SharpNeat\SharpNeatGUI\Resources\sharpneat.ico" />
+    <Content Include="SharpNeat\SharpNeatGUI\Resources\sharpneat_banner.png" />
+    <Content Include="SharpNeat\SharpNeatGUI\SharpNeatGUI.csproj" />
+    <Content Include="SharpNeat\SharpNeatLib\SharpNeatLib.csproj" />
+    <Content Include="SharpNeat\SharpNeatViewLib\SharpNeatViewLib.csproj" />
+    <Content Include="tictactoe.config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SharpNeat\ActivationFunctionViewer\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\ActivationFunctionViewer\Properties\Resources.resx" />
+    <EmbeddedResource Include="SharpNeat\SharpNeatDomains\BoxesVisualDiscrimination\BoxesVisualDiscriminationView.resx">
+      <DependentUpon>BoxesVisualDiscriminationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatDomains\CppnGenomeView.resx">
+      <DependentUpon>CppnGenomeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatDomains\FunctionRegression\FnRegressionView2D.resx">
+      <DependentUpon>FnRegressionView2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatDomains\NeatGenomeView.resx">
+      <DependentUpon>NeatGenomeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatDomains\PreyCapture\PreyCaptureView.resx">
+      <DependentUpon>PreyCaptureView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatGUI\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatGUI\GenomeForm.resx">
+      <DependentUpon>GenomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatGUI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatGUI\ProblemDomainForm.resx">
+      <DependentUpon>ProblemDomainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatGUI\Properties\Resources.resx" />
+    <EmbeddedResource Include="SharpNeat\SharpNeatGUI\SummaryGraphForm.resx">
+      <DependentUpon>SummaryGraphForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatGUI\TimeSeriesGraphForm.resx">
+      <DependentUpon>TimeSeriesGraphForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharpNeat\SharpNeatLib\Properties\Resources.resx" />
+    <EmbeddedResource Include="SharpNeat\SharpNeatViewLib\GraphControl.resx">
+      <DependentUpon>GraphControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SharpNeat\EfficacySampler\bin\Debug\" />
+    <Folder Include="SharpNeat\EfficacySampler\obj\Debug\TempPE\" />
+    <Folder Include="SharpNeat\SharpNeatConsole\bin\Debug\" />
+    <Folder Include="SharpNeat\SharpNeatConsole\obj\x86\Debug\TempPE\" />
+    <Folder Include="SharpNeat\SharpNeatDomains\bin\Debug\" />
+    <Folder Include="SharpNeat\SharpNeatDomains\obj\Debug\TempPE\" />
+    <Folder Include="SharpNeat\SharpNeatGUI\bin\Debug\" />
+    <Folder Include="SharpNeat\SharpNeatGUI\obj\Debug\TempPE\" />
+    <Folder Include="SharpNeat\SharpNeatLib\bin\Debug\" />
+    <Folder Include="SharpNeat\SharpNeatLib\obj\Debug\TempPE\" />
+    <Folder Include="SharpNeat\SharpNeatViewLib\bin\Debug\" />
+    <Folder Include="SharpNeat\SharpNeatViewLib\obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>
